@@ -308,7 +308,7 @@ ol.type li a:hover {
 	transform: scale(1.1);
 }
 .portfolio-item .hover-bg {
-	height: 260px;
+	height: 200px;
 	overflow: hidden;
 	position: relative;
 }
@@ -317,15 +317,15 @@ ol.type li a:hover {
 	text-align: center;
 	margin: 0 auto;
 	color: #ffffff;
-	background: rgba(0, 0, 0, 0.66);
-	padding: 33% 0 0 0;
+	background: rgba(0, 0, 0, .075);
+	padding: 11% 0 0 0;
 	height: 100%;
 	width: 100%;
-	opacity: 0;
+	opacity: 1;
 	transition: all 0.5s;
 }
 .hover-bg .hover-text>h4 {
-	opacity: 0;
+	opacity: 1;
 	color: #fff;
 	font-weight: 400;
 	-webkit-transform: translateY(100%);
@@ -339,7 +339,7 @@ ol.type li a:hover {
 	transform: translateY(0);
 }
 .hover-bg .hover-text>i {
-	opacity: 0;
+	opacity: 1;
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
 	transition: all 0.3s;
@@ -352,6 +352,8 @@ ol.type li a:hover {
 }
 .hover-bg:hover .hover-text {
 	opacity: 1;
+	background: #fff;
+	color:#000;
 }
 #portfolio i.fa {
 	font-size: 20px;
