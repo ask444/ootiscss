@@ -73,7 +73,13 @@ function main() {
   	// Pretty Photo
 	$("a[rel^='prettyPhoto']").prettyPhoto({
 		social_tools: false
-	});	
+    });	
+    
+    $('.navicon').on('click', function (e) {
+        e.preventDefault();
+        $(this).toggleClass('navicon--active');
+        $('.toggle').toggleClass('toggle--active');
+      });
 
 }());
 
