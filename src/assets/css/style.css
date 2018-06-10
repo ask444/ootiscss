@@ -643,3 +643,11 @@ header .intro-text {
     margin: 110px;
     color: #fff;
   }
+
+  .hover-text>small{
+	  opacity: 0;
+  }
+
+  .hover-text:hover >small{
+	opacity: 1;
+}
