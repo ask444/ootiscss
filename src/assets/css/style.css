@@ -351,8 +351,8 @@ ol.type li a:hover {
 	transform: translateY(100%);
 }
 .hover-bg:hover .hover-text {
-	opacity: 1;
-	background: #fff;
+	background-color: #ffffff;
+    opacity: .9;
 	color:#000;
 }
 #portfolio i.fa {
