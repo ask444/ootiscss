@@ -1,180 +1,82 @@
-"use strict";
-jQuery(document).ready(function ($) {
-    
 
-    $(window).load(function () {
-        $(".loaded").fadeOut();
-        $(".preloader").delay(1000).fadeOut("slow");
-    });
-    /*---------------------------------------------*
-     * Mobile menu
-     ---------------------------------------------*/
-    $('.navbar-collapse').find('a[href*=#]:not([href=#])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                $('html,body').animate({
-                    scrollTop: (target.offset().top - 40)
-                }, 1000);
-                if ($('.navbar-toggle').css('display') != 'none') {
-                    $(this).parents('.container').find(".navbar-toggle").trigger("click");
-                }
-                return false;
-            }
+function main() {
+
+(function () {
+   'use strict';
+   
+  	$('a.page-scroll').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top - 40
+            }, 900);
+            return false;
+          }
         }
-    });
+      });
 
-
-    // slick slider active 
-    $(".main_home_slider").slick({
-        dots: false,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        prevArrow: "<i class='fa fa-angle-left nextprevleft'></i>",
-        nextArrow: "<i class='fa fa-angle-right nextprevright'></i>"
-    });
-
-    //    $(".study_slider").slick({
-    //        dots: true,
-    //        slidesToShow: 1,
-    //        slidesToScroll: 1
-    //    });
-    $(".study_slider").slick({
-        dots: true,
-        arrows: false,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    });
-
-    /*---------------------------------------------*
-     * STICKY scroll
-     ---------------------------------------------*/
-
-    $("").localScroll();
-
-    /*---------------------------------------------*
-     * WOW
-     ---------------------------------------------*/
-
-    var wow = new WOW({
-        mobile: false // trigger animations on mobile devices (default is true)
-    });
-    wow.init();
-
-
-    // magnificPopup
-
-    $('.portfolio-img').magnificPopup({
-        type: 'image',
-        gallery: {
-            enabled: true
-        }
-    });
-
-
-
-
-    //---------------------------------------------
-    // Counter 
-    //---------------------------------------------
-
-    $('.statistic-counter').counterUp({
-        delay: 10,
-        time: 2000
-    });
-
-    // main-menu-scroll
-
-    jQuery(window).scroll(function () {
-        var top = jQuery(document).scrollTop();
-        var height = 300;
-        //alert(batas);
-
-        if (top > height) {
-            jQuery('.navbar-fixed-top').addClass('menu-scroll');
+    // Show Menu on Book
+    $(window).bind('scroll', function() {
+        var navHeight = $(window).height() - 500;
+        if ($(window).scrollTop() > navHeight) {
+            $('.navbar-default').addClass('on');
         } else {
-            jQuery('.navbar-fixed-top').removeClass('menu-scroll');
+            $('.navbar-default').removeClass('on');
         }
     });
 
-    // scroll Up
-
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 600) {
-            $('.scrollup').fadeIn('slow');
-        } else {
-            $('.scrollup').fadeOut('slow');
-        }
+    $('body').scrollspy({ 
+        target: '.navbar-default',
+        offset: 80
     });
-
-    $('.scrollup').click(function () {
-        $("html, body").animate({ scrollTop: 0 }, 1000);
-        return false;
-    });
-
-
-    // scrool Down
-    $('.scrooldown a').bind('click', function () {
-        $('html , body').stop().animate({
-            scrollTop: $($(this).attr('href')).offset().top - 160
-        }, 1500, 'easeInOutExpo');
-        event.preventDefault();
-    });
-
-
-
-    // Portfoliowork init
-    jQuery('#portfoliowork').mixItUp({
-        selectors: {
-            target: '.tile',
-            filter: '.filter'
-            //           sort: '.sort-btn'
-        },
-        animation: {
-            animateResizeContainer: false,
-            effects: 'fade scale'
-        }
-
-    });
-
-    // dropdown menu
-    $('.dropdown-menu').click(function (e) {
-        e.stopPropagation();
-    });
-
-    //End
-
-    $('.dropdown-menu').click(function (e) {
-        e.stopPropagation();
-    });
-
-    $('input:radio[name=bedStatus]').change(function () {
-        if (this.value == 'allot') {
-            // alert("Allot Thai Gayo Bhai");
-            $('.training').show();
-            $('.business').hide();
-        }
-        else if (this.value == 'transfer') {
-            // alert("Transfer Thai Gayo");
-            $('.training').hide();
-            $('.business').show();
-        }
-    });
-
-
-});
-
-
-
-$(document).on("scroll", function () {
-    if ($(document).scrollTop() > 120) {
-        $("nav").addClass("small");
-    } else {
-        $("nav").removeClass("small");
+	
+	
+	// Hide nav on click
+  $(".navbar-nav li a").click(function (event) {
+    // check if window is small enough so dropdown is created
+    var toggle = $(".navbar-toggle").is(":visible");
+    if (toggle) {
+      $(".navbar-collapse").collapse('hide');
     }
-});
+  });
+
+  	// Portfolio isotope filter
+    $(window).load(function() {
+        var $container = $('.portfolio-items');
+        $container.isotope({
+            filter: '*',
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            }
+        });
+        $('.cat a').click(function() {
+            $('.cat .active').removeClass('active');
+            $(this).addClass('active');
+            var selector = $(this).attr('data-filter');
+            $container.isotope({
+                filter: selector,
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false
+                }
+            });
+            return false;
+        });
+
+    });
+	
+  	// Pretty Photo
+	$("a[rel^='prettyPhoto']").prettyPhoto({
+		social_tools: false
+	});	
+
+}());
 
 
-
+}
+main();
