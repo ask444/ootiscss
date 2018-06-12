@@ -95,22 +95,22 @@ ul, ol {
 	letter-spacing: 1px;
 }
 #menu.navbar-default .navbar-nav > li > a:hover {
-	color: #25BAD0;
+	color: #fff;
 }
 .on {
 	background-color: #03252b !important;
 	padding: 0 !important;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-	color: #25BAD0 !important;
+	color: #fff !important;
 	background-color: transparent;
 }
 .navbar-toggle {
 	border-radius: 0;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-	background-color: #25BAD0;
-	border-color: #25BAD0;
+	background-color: #fff;
+	border-color: #fff;
 }
 .navbar-default .navbar-toggle:hover>.icon-bar {
 	background-color: #FFF;
@@ -514,7 +514,7 @@ header .intro-text {
 
 .toggle {
 	display: block;
-	margin: 20px auto;
+	margin: 0px 850px;
 	width: 30%;
 	background-color: rgba(255, 255, 255, 0.8);
 	padding: 15px;
@@ -576,7 +576,7 @@ header .intro-text {
   .navicon {
 	width: 100%;
 	background: transparent;
-	margin: 80px auto 40px;
+	margin: 10px auto 40px;
 	position: relative;
 	height: 30px;
 	width: 50px;
